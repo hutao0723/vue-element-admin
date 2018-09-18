@@ -11,8 +11,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-
+    proxyTable: {
+        '/api': {
+            target:'https://www.easy-mock.com/mock/5b9219ec0e67d640e401dd41/vue_element_admin',
+            changeOrigin: true,  //是否跨域
+            pathRewrite: {
+                '/api': ''   
+            }
+        }
+    },
     // Various Dev Server settings
     host: ip.address(), // can be overwritten by process.env.HOST
     port: 9528, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

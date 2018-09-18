@@ -38,10 +38,7 @@ export const constantRouterMap = [
         component: resolve =>  require(['views/errPage/pageErr'], resolve),
         hidden:true,
     },
-    {
-        path: '*',
-        redirect:'/pageErr404'
-    },
+    
 ]
 // 按权限加载的路由
 export const asyncRouterMap = [
@@ -78,6 +75,10 @@ export const asyncRouterMap = [
                 meta:{title:'表格4',icon:'el-icon-setting'},
             },
         ]
+    },
+    {
+        path: '*',
+        redirect:'/pageErr404'
     },
 ]
 export default new Router({
