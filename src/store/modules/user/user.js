@@ -5,7 +5,8 @@ import { asyncRouterMap,constantRouterMap } from '@/router'
 import {
     SAVE_USERPOWERINFO,
     USER_ROUTERS,
-    USER_BASICUROUTERS
+    USER_BASICUROUTERS,
+    TOGGLE_PAGESIDE
 } from './user-types.js'
 
 const user = {
@@ -16,6 +17,7 @@ const user = {
         userPowerInfo:[],
         // 根据权限生成相对应的路由
         userRouters:[],
+        switch_pageSide:true,
     },
     mutations:{
         // 保存从后台请求回来的权限数据
@@ -26,11 +28,14 @@ const user = {
         [USER_ROUTERS](state,data){
             state.userRouters = data
         },
-        // 
+        // 用户基础路由
         [USER_BASICUROUTERS](state,data){
             state.userBasicRouter = state.userBasicRouter.concat(data)
+        },
+        // 切换侧边栏
+        [TOGGLE_PAGESIDE](state,data){
+            state.switch_pageSide = !state.switch_pageSide
         }
-        
     },
     actions:{
         // 用户登录，

@@ -1,6 +1,7 @@
 <template>
     <div class="pageSideBar">
-        <el-menu mode="vertical" :default-active="$route.path" :collapse="isCollapse"  background-color="#304156" active-text-color="#409EFF"  text-color="#bfcbd9" class="el-menu-vertical-demo" :show-timeout="200">
+        
+        <el-menu mode="vertical" :default-active="$route.path" :collapse="user.switch_pageSide"  background-color="#304156" active-text-color="#409EFF"  text-color="#bfcbd9" class="el-menu-vertical-demo" :show-timeout="200">
             <!--这里限定了侧边栏显示的页面必须有子路由，否则不显示-->
             <template v-for="item in userBasicRouter" v-if="!item.hidden && item.children">
                 
@@ -40,7 +41,7 @@
 </template>
 <script>
     import {constantRouterMap} from '@/router'
-    import { mapGetters } from 'vuex' 
+    import { mapGetters, mapState } from 'vuex' 
     export default {
         name:'pageSideBar',
         data() {
@@ -50,9 +51,11 @@
         },
         computed:{
            ...mapGetters(['userBasicRouter']),
+           ...mapState(['user',])
         },
         created(){
-            
+            console.log(this.user);    
+            console.log(this.$store.state.user.switch_pageSide);    
         },
         methods: {
             handleOpen(key, keyPath) {

@@ -1,5 +1,5 @@
 <template>
-    <div class="layout" :class="{'takeUp':pageSide}">
+    <div class="layout" :class="{'takeUp':user.switch_pageSide}">
         <pageSide /> 
         <pageHeader />
         <el-scrollbar style="height:100%">
@@ -14,6 +14,7 @@
     import pageSide from './pageSideBar/pageSideBar'
     import pageHeader from './pageHeader/pageHeader'
     import pageContent from './pageContent/pageContent'
+    import { mapGetters, mapState } from 'vuex' 
     export default {
         name:'layout',
         components:{
@@ -22,6 +23,9 @@
             window,
             pageContent,    
         }, 
+        computed:{
+            ...mapState(['user',])
+        },
         data() {
             return {
                 pageSide:false
@@ -37,14 +41,13 @@
         width: 100%;
         box-sizing: border-box;
         position: relative;
-        transition: all 0.28s;
+        transition: all 0.3s;
         &.takeUp{
-            padding-left: 75px;
+            padding-left: 65px;
         }
         .el-scrollbar{
             box-sizing: border-box;
             padding: 15px;
-            
         }
     }
     .el-scrollbar__bar.is-vertical{

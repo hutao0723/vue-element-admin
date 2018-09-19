@@ -1,7 +1,7 @@
 <template>
     <div class="header">
         <div class="collapse-btn">
-            <i class="iconfont icon-qiehuanyingyong"></i>
+            <i class="iconfont icon-qiehuanyingyong" @click="toggleSide()"></i>
             <span>后台管理系统</span>
         </div>
         <div class="tool">
@@ -12,9 +12,7 @@
                 <i class="iconfont icon-xiaoxi3"></i>
             </el-badge>
             <!--头像-->
-            <span class="avatar">
-                <img :src="userInfo.avatar" >
-            </span>
+            <img :src="userInfo.avatar" class="avatar" >
             <!--下拉-->
             <el-dropdown trigger="click">
                 <span class="el-dropdown-link">
@@ -42,7 +40,12 @@
         },
         created(){
             
-        },    
+        },  
+        methods:{
+            toggleSide(){
+                this.$store.commit('TOGGLE_PAGESIDE')
+            }
+        }  
     }
 </script>
 
@@ -72,6 +75,8 @@
         .tool{
             color: #fff;
             font-size: 0;
+            display: flex;
+            align-items: center;
             .icon-webtubiaoku10{
                 margin-right: 15px;
             }
@@ -94,11 +99,7 @@
                 overflow: hidden;
                 vertical-align: middle;
                 margin-right: 15px;
-                img{
-                    width: 100%;
-                    border-radius: 50%;
-                    vertical-align: top;
-                }
+                border-radius: 50%;    
             }
         }
     }
