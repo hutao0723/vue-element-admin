@@ -8,8 +8,7 @@
                 <!--下面只有唯一的儿子的时候-->
                 <router-link v-if="hasOneShowingChildren(item.children) && !item.children[0].children&&!item.alwaysShow" :to="item.path+'/'+item.children[0].path"
                 :key="item.children[0].name">
-                    
-                    <el-menu-item :index="item.path+item.children[0].path" >
+                    <el-menu-item :index="item.path+'/'+item.children[0].path" >
                         <i class="iconfont" :class="item.meta.icon"></i>
                         <span v-if="item.children[0].meta&&item.children[0].meta.title" slot="title">{{item.children[0].meta.title}}</span>
                     </el-menu-item>
@@ -54,8 +53,7 @@
            ...mapState(['user',])
         },
         created(){
-            console.log(this.user);    
-            console.log(this.$store.state.user.switch_pageSide);    
+               
         },
         methods: {
             handleOpen(key, keyPath) {
@@ -82,8 +80,8 @@
 
 <style lang='less'>
     .pageSideBar{
-        background: rgb(50, 65, 87);;
-        position: fixed;
+        background: rgb(50, 65, 87);
+        position: absolute;
         top: 60px;
         bottom: 0;
         left: 0;
@@ -109,7 +107,7 @@
     // 侧边栏菜单
     .el-menu{
         background: #333744;
-        border: none;
+        border-color: rgb(50, 65, 87);
     }
     .el-submenu .el-menu-item{
         min-width: 165px;

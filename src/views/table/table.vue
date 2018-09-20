@@ -1,5 +1,5 @@
 <template>
-    <div class="table">
+    <el-card class="box-card">
         <el-row :gutter="20">
             <el-col :span="6">
                 <el-input placeholder="请输入内容" v-model="search.name" clearable>
@@ -35,7 +35,7 @@
         <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">
         </el-pagination>
     
-    </div>
+    </el-card>
 </template>
 
 <script>
