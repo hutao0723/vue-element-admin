@@ -19,8 +19,8 @@
                     {{userInfo.name}}<i class="el-icon-arrow-down el-icon--right"></i>
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>注销</el-dropdown-item>
-                    <el-dropdown-item>退出</el-dropdown-item>
+                    <el-dropdown-item @click.native="signOut">注销</el-dropdown-item>
+                    <el-dropdown-item @click.native="signOut">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
 
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import {removeToken} from '@/public/locationData'
     export default {
         data() {
             return {
@@ -44,6 +45,10 @@
         methods:{
             toggleSide(){
                 this.$store.commit('TOGGLE_PAGESIDE')
+            },
+            signOut(){
+                removeToken('userLogin')
+                this.$router.push({path:'/login'}); 
             }
         }  
     }
