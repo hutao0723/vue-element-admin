@@ -1,5 +1,5 @@
 <template>
-    <el-card class="box-card">
+    <el-card>
         <el-row :gutter="20">
             <el-col :span="6">
                 <el-input placeholder="请输入内容" v-model="search.name" clearable>

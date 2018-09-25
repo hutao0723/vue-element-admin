@@ -13,7 +13,7 @@ export const constantRouterMap = [
         path: '/index',
         name: 'index',
         component: resolve =>  require(['views/pageLayout/layout'], resolve),
-        meta:{title:'首页',icon:'icon-shouyeshouye'},
+        meta:{title:'首页',icon:'icon-shouye'},
         redirect:'/index/index',
         hidden:false,
         children:[
@@ -73,6 +73,38 @@ export const asyncRouterMap = [
                 name: 'table3',
                 component: resolve =>  require(['views/table/table'], resolve),
                 meta:{title:'表格4',icon:'el-icon-setting'},
+            },
+        ]
+    },
+    {
+        path: '/richText',
+        name: '富文本编辑',
+        component: resolve =>  require(['views/pageLayout/layout'], resolve),
+        meta:{title:'富文本编辑',icon:'icon-wenbenwendang'},
+        redirect:'/richText/wangEdit',
+        hidden:false,
+        children:[
+            {
+                path: 'wangEdit',
+                name: 'wangEdit',
+                component: resolve =>  require(['views/richText/wangEdit'], resolve),
+                meta:{title:'wangEdit',icon:'el-icon-setting'},
+            },
+        ]
+    },
+    {
+        path: '/upload',
+        name: '上传',
+        component: resolve =>  require(['views/pageLayout/layout'], resolve),
+        meta:{title:'上传',icon:'icon-ziyuan'},
+        redirect:'/upload/upload',
+        hidden:false,
+        children:[
+            {
+                path: 'upload',
+                name: 'upload',
+                component: resolve =>  require(['views/upload/upload'], resolve),
+                meta:{title:'上传',icon:'el-icon-setting'},
             },
         ]
     },

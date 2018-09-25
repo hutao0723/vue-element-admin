@@ -1,15 +1,15 @@
 <template>
     <div class="header">
         <div class="collapse-btn">
-            <i class="iconfont icon-qiehuanyingyong" @click="toggleSide()"></i>
+            <i class="iconfont icon-yijicaidan" @click="toggleSide()"></i>
             <span>后台管理系统</span>
         </div>
         <div class="tool">
             <!--全屏-->
-            <i class="iconfont icon-webtubiaoku10"></i>
+            <i class="iconfont icon-quanping"></i>
             <!--消息-->
             <el-badge is-dot class="item">
-                <i class="iconfont icon-xiaoxi3"></i>
+                <i class="iconfont icon-xiaoxi"></i>
             </el-badge>
             <!--头像-->
             <img :src="userInfo.avatar" class="avatar" >
