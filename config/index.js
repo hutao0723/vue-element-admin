@@ -14,6 +14,7 @@ module.exports = {
     proxyTable: {
         '/api': {
             target:'https://www.easy-mock.com/mock/5b9219ec0e67d640e401dd41/vue_element_admin',
+            //target:'http://localhost:3000',
             changeOrigin: true,  //是否跨域
             pathRewrite: {
                 '/api': ''   

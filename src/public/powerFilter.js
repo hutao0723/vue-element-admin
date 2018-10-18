@@ -12,8 +12,8 @@ router.beforeEach((to, from, next) => {
     /**
      * 获取是否有这个token
      */
-    NProgress.start()
-    if (getToken('userLogin')) {
+    NProgress.start();
+    if (getToken('user_token')) {
         // 已经登录过的用户，无需再登录
         if (to.path === '/login') {
             next({ path: '/' })

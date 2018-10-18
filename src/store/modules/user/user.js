@@ -39,20 +39,26 @@ const user = {
     },
     actions:{
         // 用户登录，
-        userLogin({commit},loginInfo){
+      userLogin({ commit }, loginInfo) {
             return new Promise((resolve,reject)=>{
                 // 登录请求
                 post(API.userLogin,loginInfo).then((res)=>{
                     // 用户如果登录成功，设置token
-                    if(res.data.code == 200){
-                        setToken('userLogin',new Date())
+                    if(res.code == 200){
+                        // 后台请求设置
+                        setToken('user_token',res.token)
                         resolve()    
-                    }else{
+                    } else {
+                      
                         reject()
                     }
                 }).catch(err => {
+
+                  console.log(err);
                     reject(err)
                 })
+            }).catch(err => {
+                console.log(err)
             })
         },
         // 获取用户权限信息，带上token验证请求，获取的信息直接resolve出去
@@ -60,7 +66,10 @@ const user = {
             return new Promise((resolve,reject)=>{
                 // 权限请求
                 post(API.getUserPowerInfo).then((res)=>{
-                    if(res.data.code == 200){
+                    /**
+                     * 此处是直接加载了全部权限
+                     */
+                    if(res.code == 200){
                         commit('SAVE_USERPOWERINFO',asyncRouterMap)
                         resolve(asyncRouterMap)    
                     }else{

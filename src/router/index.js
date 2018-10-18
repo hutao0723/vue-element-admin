@@ -109,6 +109,22 @@ export const asyncRouterMap = [
         ]
     },
     {
+        path: '/form',
+        name: '表单',
+        component: resolve => require(['views/pageLayout/layout'], resolve),
+        meta: { title: '表单', icon: 'icon-ziyuan' },
+        redirect: '/form/form',
+        hidden: false,
+        children: [
+          {
+            path: 'form',
+            name: 'form',
+            component: resolve => require(['views/form/form'], resolve),
+            meta: { title: '表单', icon: 'el-icon-setting' },
+          },
+        ]
+    },
+    {
         path: '*',
         redirect:'/pageErr404'
     },
